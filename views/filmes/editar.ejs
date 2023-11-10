@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Filme</title>
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+      <h2>Editar Filme</h2>
+      <form id="updateForm" method="post" action="/filmes/update">
+        <input
+          type="hidden"
+          id="FilmeID"
+          name="FilmeID"
+          value="<%= filme.FilmeID %>"
+        />
+        <div class="form-group">
+          <label for="Titulo">Título:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Titulo"
+            name="Titulo"
+            value="<%= filme.Titulo %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="AnoLancamento">Ano de Lançamento:</label>
+          <input
+            type="number"
+            class="form-control"
+            id="AnoLancamento"
+            name="AnoLancamento"
+            value="<%= filme.AnoLancamento %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="Classificacao">Classificação:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Classificacao"
+            name="Classificacao"
+            value="<%= filme.Classificacao %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="DuracaoMinutos">Duração (minutos):</label>
+          <input
+            type="number"
+            class="form-control"
+            id="DuracaoMinutos"
+            name="DuracaoMinutos"
+            value="<%= filme.DuracaoMinutos %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="Sinopse">Sinopse:</label>
+          <textarea
+            class="form-control"
+            id="Sinopse"
+            name="Sinopse"
+            rows="4"
+            required
+          >
+<%= filme.Sinopse %></textarea
+          >
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Confirmar Alterações
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

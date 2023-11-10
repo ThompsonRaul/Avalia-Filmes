@@ -1,0 +1,34 @@
+<!-- index.ejs -->
+<html>
+  <head>
+    <title>AvaliaFilmes</title>
+    <!-- Inclua os estilos do Bootstrap -->
+    <%- include('../partials/estilizacao.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/navbar.ejs') %>
+    <div class="container mt-5">
+      <h2>Lista de Filmes</h2>
+      <ul class="list-group">
+        <% filmes.forEach(function(filme) { %>
+        <li class="list-group-item">
+          <strong><%= filme.Filme %></strong><br />
+          Ano de Lançamento: <%= filme.AnoLancamento %><br />
+          Atores: <%= filme.Atores %><br />
+          Diretores: <%= filme.Diretores %><br />
+          Gêneros: <%= filme.Generos %><br />
+          Média de Avaliações: <%= filme.MediaAvaliacoes %>
+
+          <!-- Botão de edição (alinhado à direita) -->
+          <div class="d-flex justify-content-end">
+            <a href="/filmes/editar/<%= filme.ID %>" class="btn btn-primary"
+              >Editar Filme</a
+            >
+          </div>
+        </li>
+        <% }); %>
+      </ul>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

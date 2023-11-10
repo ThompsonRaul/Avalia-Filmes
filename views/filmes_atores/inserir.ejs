@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Conjunto Filme/Autor</title>
+    <!-- Estilos do Bootstrap -->
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+      <h2 class="mb-4">Inserir Conjunto Filme/Autor</h2>
+      <form method="post" action="/filmes_atores/post">
+        <div class="form-group">
+          <label for="FilmeID">Selecione um Filme:</label>
+          <select class="form-control" id="FilmeID" name="FilmeID" required>
+            <option value="" disabled selected>-- Selecione um Filme --</option>
+            <% filmes.forEach(function(filme) { %>
+            <option value="<%= filme.FilmeID %>"><%= filme.Titulo %></option>
+            <% }); %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="AtorID">Selecione um Ator:</label>
+          <select class="form-control" id="AtorID" name="AtorID" required>
+            <option value="" disabled selected>-- Selecione um Ator --</option>
+            <% atores.forEach(function(ator) { %>
+            <option value="<%= ator.AtorID %>"><%= ator.Nome %></option>
+            <% }); %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Inserir Conjunto Filme/Ator
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Conjunto Filme/Gênero</title>
+    <!-- Estilos do Bootstrap -->
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+      <h2 class="mb-4">Inserir Conjunto Filme/Gênero</h2>
+      <form method="post" action="/filmes_generos/post">
+        <div class="form-group">
+          <label for="FilmeID">Selecione um Filme:</label>
+          <select class="form-control" id="FilmeID" name="FilmeID" required>
+            <option value="" disabled selected>-- Selecione um Filme --</option>
+            <% filmes.forEach(function(filme) { %>
+            <option value="<%= filme.FilmeID %>"><%= filme.Titulo %></option>
+            <% }); %>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="GeneroID">Selecione um Gênero:</label>
+          <select class="form-control" id="GeneroID" name="GeneroID" required>
+            <option value="" disabled selected>
+              -- Selecione um Gênero --
+            </option>
+            <% generos.forEach(function(genero) { %>
+            <option value="<%= genero.GeneroID %>">
+              <%= genero.NomeGenero %>
+            </option>
+            <% }); %>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary">
+          Inserir Conjunto Filme/Gênero
+        </button>
+      </form>
+    </div>
+  </body>
+</html>

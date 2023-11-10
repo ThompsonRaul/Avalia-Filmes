@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Ator</title>
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-5">
+      <h2>Inserir Ator</h2>
+      <form method="post" action="/atores/post">
+        <div class="form-group">
+          <label for="Nome">Nome do Ator:</label>
+          <input
+            type="text"
+            class="form-control"
+            id="Nome"
+            name="Nome"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Inserir Ator</button>
+      </form>
+    </div>
+  </body>
+</html>
