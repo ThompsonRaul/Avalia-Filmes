@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inserir Filme</title>
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-3 min-vh-100">
+      <h2>Resultados da Pesquisa</h2>
+
+      <% if (filmes.length === 0) { %>
+      <p>Não foram encontrados resultados para esta pesquisa.</p>
+      <% } else { %>
+      <ul class="list-group">
+        <% filmes.forEach(function(filme) { %>
+        <li class="list-group-item">
+          <strong><%= filme.Filme %></strong><br />
+          Ano de Lançamento: <%= filme.AnoLancamento %><br />
+          Atores: <%= filme.Atores %><br />
+          Diretores: <%= filme.Diretores %><br />
+          Gêneros: <%= filme.Generos %><br />
+          Média de Avaliações: <%= filme.MediaAvaliacoes %>
+        </li>
+        <% }); %>
+      </ul>
+      <% } %>
+    </div>
+    <%- include('../../partials/footer.ejs') %>
+  </body>
+</html>

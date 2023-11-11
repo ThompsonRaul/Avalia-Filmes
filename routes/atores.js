@@ -24,4 +24,34 @@ router.post("/post", (req, res) => {
   });
 });
 
+router.get("/pesquisar", (req, res) => {
+  let searchTerm = req.query.nome || "";
+  searchTerm = "%" + searchTerm + "%";
+
+  const query = `
+  SELECT
+    A.Nome AS NomeAtor,
+  GROUP_CONCAT(F.Titulo SEPARATOR ', ') AS FilmesAtuados
+  FROM
+    Atores A
+  JOIN
+    FilmesAtores FA ON A.AtorID = FA.AtorID
+  JOIN
+    Filmes F ON FA.FilmeID = F.FilmeID
+  WHERE
+    A.Nome LIKE ?
+  GROUP BY
+    A.Nome;
+`;
+
+  db.query(query, [searchTerm], (error, atores) => {
+    if (error) {
+      console.error("Erro:", error);
+      res.status(500).send("Erro interno do servidor");
+    } else {
+      res.render("atores/pesquisar", { atores, searchTerm });
+    }
+  });
+});
+
 module.exports = router;

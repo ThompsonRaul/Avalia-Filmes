@@ -1,13 +1,15 @@
-<!-- index.ejs -->
+<!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AvaliaFilmes</title>
     <!-- Inclua os estilos do Bootstrap -->
     <%- include('../partials/estilizacao.ejs') %>
   </head>
   <body>
     <%- include('../partials/navbar.ejs') %>
-    <div class="container mt-5">
+    <div class="container mt-5 min-vh-100">
       <h2>Lista de Filmes</h2>
       <ul class="list-group">
         <% filmes.forEach(function(filme) { %>
@@ -19,7 +21,6 @@
           Gêneros: <%= filme.Generos %><br />
           Média de Avaliações: <%= filme.MediaAvaliacoes %>
 
-          <!-- Botão de edição (alinhado à direita) -->
           <div class="d-flex justify-content-end">
             <a href="/filmes/editar/<%= filme.ID %>" class="btn btn-primary"
               >Editar Filme</a
