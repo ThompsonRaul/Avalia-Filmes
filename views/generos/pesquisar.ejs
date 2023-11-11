@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pesquisar Filmes por Gênero</title>
+    <%- include('../../partials/estilizacao.ejs') %>
+</head>
+
+<body>
+    <%- include('../../partials/navbar.ejs') %>
+        <div class="container mt-3 min-vh-100">
+            <h2>Pesquisar Filmes por Gênero</h2>
+
+            <!-- Formulário para escolher o gênero -->
+            <form class="form-inline mt-3" action="/generos/pesquisar" method="GET">
+                <div class="form-group">
+                    <label for="GeneroID" class="sr-only">Escolha o Gênero</label>
+                    <select class="form-control" id="GeneroID" name="GeneroID">
+                        <!-- Iterar sobre os gêneros disponíveis -->
+                        <% generos.forEach(function(genero) { %>
+                            <option value="<%= genero.GeneroID %>">
+                                <%= genero.NomeGenero %>
+                            </option>
+                            <% }); %>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary ml-2">Pesquisar por Gênero</button>
+            </form>
+            <h3>Resultados da Pesquisa</h3>
+
+            <% if (generos.length===0) { %>
+                <p>Não foram encontrados resultados para esta pesquisa.</p>
+                <% } else { %>
+                    <ul class="list-group">
+                        <% generos.forEach(function(genero) { %>
+                            <li class="list-group-item">
+                                <strong>
+                                    <%= genero.NomeGenero %>
+                                </strong><br />
+                                Filme(s) do Gênero: <%= genero.FilmesGeneros %>
+                            </li>
+                            <% }); %>
+                    </ul>
+                    <% } %>
+        </div>
+        </div>
+        <%- include('../../partials/footer.ejs') %>
+</body>
+
+</html>

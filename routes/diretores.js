@@ -24,4 +24,34 @@ router.post("/post", (req, res) => {
   });
 });
 
+router.get("/pesquisar", (req, res) => {
+  let searchTerm = req.query.nome || "";
+  searchTerm = "%" + searchTerm + "%";
+
+  const query = `
+  SELECT
+    D.NomeDiretor AS NomeDiretor,
+  GROUP_CONCAT(F.Titulo SEPARATOR ', ') AS FilmesDirigidos
+  FROM
+    Diretores D
+  JOIN
+    FilmesDiretores FD ON D.DiretorID = FD.DiretorID
+  JOIN
+    Filmes F ON FD.FilmeID = F.FilmeID
+  WHERE
+    D.NomeDiretor LIKE ?
+  GROUP BY
+    D.NomeDiretor;
+`;
+
+  db.query(query, [searchTerm], (error, diretores) => {
+    if (error) {
+      console.error("Erro:", error);
+      res.status(500).send("Erro interno do servidor");
+    } else {
+      res.render("diretores/pesquisar", { diretores, searchTerm });
+    }
+  });
+});
+
 module.exports = router;
