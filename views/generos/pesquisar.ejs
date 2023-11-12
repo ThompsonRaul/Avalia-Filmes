@@ -3,31 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pesquisar Atores</title>
+    <title>Pesquisar Filmes por Gênero</title>
     <%- include('../../partials/estilizacao.ejs') %>
   </head>
+
   <body>
     <%- include('../../partials/navbar.ejs') %>
+
     <div class="container mt-3 min-vh-100">
-      <h2>Pesquisar Atores</h2>
+      <h2>Pesquisar Filmes por Gênero</h2>
       <form
         class="form-inline mt-3"
-        action="/atores/resultados_pesquisa"
+        action="/generos/resultados_pesquisa"
         method="GET"
       >
         <div class="form-group">
-          <label for="nomeAtor" class="sr-only">Nome do Ator</label>
-          <input
-            type="text"
-            class="form-control"
-            id="nomeAtor"
-            name="nome"
-            placeholder="Digite o nome do ator"
-          />
+          <label for="generoId">Selecione o Gênero:</label>
+          <select class="form-control" id="generoId" name="generoId">
+            <% generos.forEach(function(genero) { %>
+            <option value="<%= genero.GeneroID %>">
+              <%= genero.NomeGenero %>
+            </option>
+            <% }); %>
+          </select>
         </div>
         <button type="submit" class="btn btn-primary ml-2">Pesquisar</button>
       </form>
     </div>
+
     <%- include('../../partials/footer.ejs') %>
   </body>
 </html>

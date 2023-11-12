@@ -25,6 +25,10 @@ router.post("/post", (req, res) => {
 });
 
 router.get("/pesquisar", (req, res) => {
+  res.render("atores/pesquisar");
+});
+
+router.get("/resultados_pesquisa", (req, res) => {
   let searchTerm = req.query.nome || "";
   searchTerm = "%" + searchTerm + "%";
 
@@ -49,7 +53,7 @@ router.get("/pesquisar", (req, res) => {
       console.error("Erro:", error);
       res.status(500).send("Erro interno do servidor");
     } else {
-      res.render("atores/pesquisar", { atores, searchTerm });
+      res.render("atores/resultados_pesquisa", { atores, searchTerm });
     }
   });
 });

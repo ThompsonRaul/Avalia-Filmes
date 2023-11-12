@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AvaliaFilmes</title>
-    <!-- Inclua os estilos do Bootstrap -->
     <%- include('../partials/estilizacao.ejs') %>
   </head>
   <body>
@@ -29,7 +28,19 @@
         </li>
         <% }); %>
       </ul>
+
+      <!-- Adicione a navegação de página usando Bootstrap -->
+      <nav aria-label="Navegação de página">
+        <ul class="pagination justify-content-center mt-4">
+          <% for (let i = 1; i <= totalPaginas; i++) { %>
+          <li class="page-item <%= i == paginaAtual ? 'active' : '' %>">
+            <a class="page-link" href="?pagina=<%= i %>"><%= i %></a>
+          </li>
+          <% } %>
+        </ul>
+      </nav>
     </div>
+
     <%- include('../partials/footer.ejs') %>
   </body>
 </html>

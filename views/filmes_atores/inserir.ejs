@@ -10,7 +10,7 @@
 
   <body>
     <%- include('../../partials/navbar.ejs') %>
-    <div class="container mt-5">
+    <div class="container mt-5 min-vh-100">
       <h2 class="mb-4">Inserir Conjunto Filme/Autor</h2>
       <form method="post" action="/filmes_atores/post">
         <div class="form-group">
@@ -37,5 +37,6 @@
         </button>
       </form>
     </div>
+    <%- include('../../partials/footer.ejs') %>
   </body>
 </html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resultados da Pesquisa</title>
+    <%- include('../../partials/estilizacao.ejs') %>
+  </head>
+
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+
+    <div class="container mt-3 min-vh-100">
+      <h2>Resultados da Pesquisa por <%= generoNome %></h2>
+
+      <% if (filmesPorGenero.length > 0) { %>
+      <ul class="list-group">
+        <% filmesPorGenero.forEach(function(resultado) { %>
+        <li class="list-group-item">
+          <strong>Filme(s) do gênero <%= resultado.NomeGenero %></strong>: <%=
+          resultado.TitulosFilmes %>
+        </li>
+        <% }); %>
+      </ul>
+      <% } else { %>
+      <p>Não foram encontrados filmes para este gênero.</p>
+      <% } %>
+
+      <!-- Adicione outros elementos ou estilos conforme necessário -->
+    </div>
+
+    <%- include('../../partials/footer.ejs') %>
+  </body>
+</html>
