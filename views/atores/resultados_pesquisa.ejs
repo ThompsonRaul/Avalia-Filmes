@@ -1,12 +1,16 @@
+<!-- atores/pesquisar.ejs -->
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pesquisar Atores</title>
+    <!-- Inclua os estilos do Bootstrap -->
     <%- include('../../partials/estilizacao.ejs') %>
   </head>
   <body>
+    <!-- Inclua a barra de navegação, se necessário -->
     <%- include('../../partials/navbar.ejs') %>
     <div class="container mt-3 min-vh-100">
       <h2>Pesquisar Atores</h2>
@@ -27,7 +31,22 @@
         </div>
         <button type="submit" class="btn btn-primary ml-2">Pesquisar</button>
       </form>
+      <h3>Resultados da Pesquisa</h3>
+
+      <% if (atores.length > 0) { %>
+      <ul class="list-group">
+        <% atores.forEach(function(ator) { %>
+        <li class="list-group-item">
+          <strong><%= ator.NomeAtor %></strong><br />
+          Filmes Atuados: <%= ator.FilmesAtuados %>
+        </li>
+        <% }); %>
+      </ul>
+      <% } else { %>
+      <p>Não foram encontrados resultados para esta pesquisa.</p>
+      <% } %>
     </div>
+    <!-- Inclua o rodapé, se necessário -->
     <%- include('../../partials/footer.ejs') %>
   </body>
 </html>

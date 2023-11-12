@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+<<<<<<< HEAD
 
 <head>
+=======
+  <head>
+>>>>>>> b34fe31105d5b807d984382c0cf295ec976bebe3
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pesquisar Diretores</title>
     <%- include('../../partials/estilizacao.ejs') %>
+<<<<<<< HEAD
 </head>
 
 <body>
@@ -40,3 +45,31 @@
 </body>
 
 </html>
+=======
+  </head>
+  <body>
+    <%- include('../../partials/navbar.ejs') %>
+    <div class="container mt-3 min-vh-100">
+      <h2>Pesquisar Diretores</h2>
+      <form
+        class="form-inline mt-3"
+        action="/diretores/resultados_pesquisa"
+        method="GET"
+      >
+        <div class="form-group">
+          <label for="nomeDiretor" class="sr-only">Nome do Diretor</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nomeDiretor"
+            name="nome"
+            placeholder="Digite o nome do diretor"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary ml-2">Pesquisar</button>
+      </form>
+    </div>
+    <%- include('../../partials/footer.ejs') %>
+  </body>
+</html>
+>>>>>>> b34fe31105d5b807d984382c0cf295ec976bebe3
