@@ -25,13 +25,10 @@ router.post("/post", (req, res) => {
 });
 
 router.get("/pesquisar", (req, res) => {
-<<<<<<< HEAD
-=======
   res.render("diretores/pesquisar");
 });
 
 router.get("/resultados_pesquisa", (req, res) => {
->>>>>>> b34fe31105d5b807d984382c0cf295ec976bebe3
   let searchTerm = req.query.nome || "";
   searchTerm = "%" + searchTerm + "%";
 
@@ -56,11 +53,7 @@ router.get("/resultados_pesquisa", (req, res) => {
       console.error("Erro:", error);
       res.status(500).send("Erro interno do servidor");
     } else {
-<<<<<<< HEAD
-      res.render("diretores/pesquisar", { diretores, searchTerm });
-=======
       res.render("diretores/resultados_pesquisa", { diretores, searchTerm });
->>>>>>> b34fe31105d5b807d984382c0cf295ec976bebe3
     }
   });
 });
